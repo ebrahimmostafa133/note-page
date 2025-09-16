@@ -1,0 +1,32 @@
+<h2 mat-dialog-title class="dialog-title">
+  📝 {{ data._id ? 'Edit Note' : 'Add Your Note' }}
+</h2>
+
+<div mat-dialog-content class="dialog-content">
+  <form class="note-form">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="data.title" name="title" placeholder="Enter note title" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Content</mat-label>
+      <textarea
+        matInput
+        rows="6"
+        [(ngModel)]="data.content"
+        name="content"
+        placeholder="Write your note here..."
+      ></textarea>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end" class="dialog-actions d-flex gap-4 m-auto">
+  <button mat-stroked-button color="warn" (click)="onNoClick()">
+    Cancel
+  </button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data">
+    {{ data._id ? 'Update' : 'Add' }}
+  </button>
+</div>

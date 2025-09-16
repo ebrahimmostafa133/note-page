@@ -1,0 +1,136 @@
+<section class="signup d-flex align-items-center vh-100">
+  <div class="container boxShadow">
+    <div class="signup-content row">
+      <div class="signup-form col-md-6">
+        <h2 class="form-title fs-2">Sign up</h2>
+
+        <!-- Bind formGroup correctly -->
+        <form
+          class="register-form mt-4"
+          [formGroup]="registerForm"
+          (ngSubmit)="submitForm()"
+        >
+          <!-- Name -->
+          <div class="form-group d-flex align-items-center mb-1">
+            <label for="name"><span class="fa-solid fa-user"></span></label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Your Name"
+              formControlName="name"
+            />
+          </div>
+          <div
+            class="text-danger small mb-3"
+            *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid"
+          >
+            Name is required
+          </div>
+
+          <!-- Email -->
+          <div class="form-group d-flex align-items-center mb-1">
+            <label for="email"><span class="fa-solid fa-envelope"></span></label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Your Email"
+              formControlName="email"
+            />
+          </div>
+          <div
+            class="text-danger small mb-3"
+            *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+          >
+            <span *ngIf="registerForm.get('email')?.errors?.['required']">
+              Email is required
+            </span>
+            <span *ngIf="registerForm.get('email')?.errors?.['email']">
+              Please enter a valid email
+            </span>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group d-flex align-items-center mb-1">
+            <label for="password"><span class="fa-solid fa-lock"></span></label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              formControlName="password"
+            />
+          </div>
+          <div
+            class="text-danger small mb-3"
+            *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+          >
+            <span *ngIf="registerForm.get('password')?.errors?.['required']">
+              Password is required
+            </span>
+            <span *ngIf="registerForm.get('password')?.errors?.['minlength']">
+              Password must be at least 6 characters
+            </span>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group d-flex align-items-center mb-1">
+            <label for="phone"><span class="fa-solid fa-phone"></span></label>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Phone"
+              formControlName="phone"
+            />
+          </div>
+          <div
+            class="text-danger small mb-3"
+            *ngIf="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid"
+          >
+            Phone is required
+          </div>
+
+          <!-- Age -->
+          <div class="form-group d-flex align-items-center mb-1">
+            <label for="age"><span class="fa-solid fa-globe"></span></label>
+            <input
+              type="number"
+              id="age"
+              placeholder="Age"
+              formControlName="age"
+            />
+          </div>
+          <div
+            class="text-danger small mb-3"
+            *ngIf="registerForm.get('age')?.touched && registerForm.get('age')?.invalid"
+          >
+            <span *ngIf="registerForm.get('age')?.errors?.['required']">
+              Age is required
+            </span>
+            <span *ngIf="registerForm.get('age')?.errors?.['min']">
+              Age must be at least 18
+            </span>
+          </div>
+
+          <!-- Submit -->
+          <div
+            class="d-flex justify-content-center align-items-center flex-column"
+          >
+            <button class="btn btn-danger" [disabled]="registerForm.invalid">
+              <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+              <span *ngIf="!loading">Register</span>
+            </button>
+            <p class="my-3">
+              Already Have an account?
+              <a routerLink="/signin" class="text-info">Signin</a>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <div class="signup-image col-md-6 d-flex justify-content-center">
+        <figure>
+          <img src="assets/images/signup-image.jpg" alt="sign up image" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>

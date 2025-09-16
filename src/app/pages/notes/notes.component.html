@@ -1,0 +1,63 @@
+<div class="row notes-container">
+  <div class="col-lg-2">
+    <app-side-nav></app-side-nav>
+  </div>
+
+  <div class="col-lg-10 content-card">
+    <!-- Top bar -->
+    <ol class="list-unstyled px-3 d-flex justify-content-between align-items-center">
+      <li>
+        <button
+          [ngStyle]="{ backgroundColor: '#FC6736' }"
+          class="text-white btn"
+          mat-raised-button
+          (click)="openDialog()"
+        >
+          Add
+        </button>
+      </li>
+      <li>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search"
+          [(ngModel)]="searchQuery"
+          (input)="searchNotes()"
+        />
+      </li>
+    </ol>
+
+    <!-- Notes Grid -->
+    <div class="row justify-content-start p-3">
+      <div
+        class="card-big-shadow col-md-4 col-lg-3 mb-4"
+        *ngFor="let note of filteredNotes"
+      >
+        <div
+          class="card card-just-text"
+          data-background="color"
+          data-color="yellow"
+          data-radius="none"
+        >
+          <div class="content">
+            <h4 class="title text-black">{{ note.title }}</h4>
+            <p class="description">{{ note.content }}</p>
+            <div class="d-flex justify-content-evenly gap-2">
+              <button class="btn p-0" (click)="openDialog(note)">
+                <i class="fa-solid fa-pen-to-square text-primary cursor-pointer"></i>
+              </button>
+              <button class="btn p-0" (click)="deleteNote(note._id!)">
+                <i class="fa-solid fa-trash text-danger cursor-pointer"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="filteredNotes.length === 0" class="text-center mt-5">
+        <p class="text-muted fs-5">No notes found.</p>
+      </div>
+    </div>
+  </div>
+</div>

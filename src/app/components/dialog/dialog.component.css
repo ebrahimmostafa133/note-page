@@ -1,0 +1,47 @@
+::ng-deep .mat-mdc-dialog-surface {
+  width: 500px !important;
+  overflow: hidden !important;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.dialog-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #3f51b5;
+  margin-bottom: 15px;
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.dialog-content {
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.dialog-actions {
+  margin-top: 20px;
+}
+
+button {
+  min-width: 110px;
+  border-radius: 10px !important;
+}
+
+button[color="primary"] {
+  background: linear-gradient(45deg, #3f51b5, #2196f3);
+  color: white;
+  font-weight: bold;
+}
+ textarea{
+  width: 350px;
+ }
